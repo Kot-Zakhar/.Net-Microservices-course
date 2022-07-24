@@ -1,0 +1,85 @@
+{
+	"info": {
+		"_postman_id": "1b5d0352-1c54-43d2-8288-2728b501cc36",
+		"name": "Microservices",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "19000436"
+	},
+	"item": [
+		{
+			"name": "Platforms",
+			"item": [
+				{
+					"name": "Get All Platforms",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5164/api/platforms",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5164",
+							"path": [
+								"api",
+								"platforms"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Platfrom by id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5164/api/platforms/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5164",
+							"path": [
+								"api",
+								"platforms",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "New Platform",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Docker\",\r\n    \"publisher\": \"Docker\",\r\n    \"cost\": \"Free\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5164/api/platforms",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5164",
+							"path": [
+								"api",
+								"platforms"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
