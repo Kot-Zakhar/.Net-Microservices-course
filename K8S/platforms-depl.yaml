@@ -6,14 +6,14 @@ spec:
   replicas: 1
   selector:
     matchLabels:
-      app: platformservice
+      app: platformsservice
   template:
     metadata:
       labels:
-        app: platformservice
+        app: platformsservice
     spec:
       containers:
-      - name: platformservice
-        image: kotzakhar/platformservice:latest
+      - name: platformsservice
+        image: kotzakhar/platformsservice:latest
         ports:
         - containerPort: 80
