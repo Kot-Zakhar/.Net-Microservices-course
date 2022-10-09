@@ -5,9 +5,9 @@ metadata:
 spec:
   type: NodePort
   selector:
-    app: platformservice
+    app: platformsservice
   ports:
-    - name: platformservice
+    - name: platformsservice
       protocol: TCP
       port: 80
       targetPort: 80

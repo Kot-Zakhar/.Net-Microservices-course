@@ -23,7 +23,7 @@ namespace PlatformsService.SyncDataServices.Http
         "application/jon"
       );
 
-      var response = await _httpClient.PostAsync($"{_configuration["CommandService"]}/platforms/", httpContext);
+      var response = await _httpClient.PostAsync($"{_configuration["CommandsService"]}/platforms/", httpContext);
 
       if (response.IsSuccessStatusCode)
       {

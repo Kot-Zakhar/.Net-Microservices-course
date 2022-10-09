@@ -26,6 +26,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+Console.WriteLine("--> Commands service address: " + app.Configuration.GetValue<string>("CommandsService"));
+
 // app.UseHttpsRedirection();
 
 app.UseAuthorization();
