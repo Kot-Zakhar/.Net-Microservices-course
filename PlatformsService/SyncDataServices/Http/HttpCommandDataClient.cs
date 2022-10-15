@@ -7,12 +7,12 @@ namespace PlatformsService.SyncDataServices.Http
   public class HttpCommandDataClient : ICommandDataClient
   {
     private readonly HttpClient _httpClient;
-    private readonly IConfiguration _configuration;
+    private readonly string _commandServiceAddress;
 
-    public HttpCommandDataClient(HttpClient httpClient, IConfiguration configuration)
+    public HttpCommandDataClient(HttpClient httpClient)
     {
       _httpClient = httpClient;
-      _configuration = configuration;
+      _commandServiceAddress = Environment.GetEnvironmentVariable("COMMANDS_SERVICE_ADDRESS") ?? "";
     }
 
     public async Task SendPlatformToCommand(PlatformReadDto platform)
@@ -23,7 +23,7 @@ namespace PlatformsService.SyncDataServices.Http
         "application/jon"
       );
 
-      var response = await _httpClient.PostAsync($"{_configuration["CommandsService"]}/platforms/", httpContext);
+      var response = await _httpClient.PostAsync($"{_commandServiceAddress}/platforms/", httpContext);
 
       if (response.IsSuccessStatusCode)
       {

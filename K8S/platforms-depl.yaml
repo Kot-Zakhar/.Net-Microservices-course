@@ -15,6 +15,18 @@ spec:
       containers:
       - name: platformsservice
         image: kotzakhar/platformsservice:latest
+        env:
+          - name: DB_SERVER
+            value: "platforms-clusterip-srv,1433"
+          - name: DB_USER
+            value: "sa"
+          - name: DB_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: db-secret
+                key: MSSQL_SA_PASSWORD
+          - name: COMMANDS_SERVICE_ADDRESS
+            value: "http://commands-clusterip-srv:80/api/c"
 ---
 apiVersion: v1
 kind: Service

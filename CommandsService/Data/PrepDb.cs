@@ -1,7 +1,6 @@
 using Microsoft.EntityFrameworkCore;
-using PlatformsService.Models;
 
-namespace PlatformsService.Data
+namespace CommandsService.Data
 {
     public static class PrepDb
     {
@@ -26,17 +25,12 @@ namespace PlatformsService.Data
             }
 
 
-            if (context.Platforms.Any()) {
+            if (context.Commands.Any()) {
                 Console.WriteLine("--> We already have data.");
                 return;
             }
 
             Console.WriteLine("--> Seed data");
-
-            context.Platforms.AddRange(
-                new Platform() { Name = "Dot Net", Publisher = "Microsoft", Cost = "Free" },
-                new Platform() { Name = "Sql Server Express", Publisher = "Microsoft", Cost = "Free" }
-            );
             
             context.SaveChanges();
         }

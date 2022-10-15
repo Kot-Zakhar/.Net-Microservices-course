@@ -17,6 +17,16 @@ spec:
         image: kotzakhar/commandsservice:latest
         ports:
         - containerPort: 80
+        env:
+          - name: DB_SERVER
+            value: "commands-clusterip-srv,1433"
+          - name: DB_USER
+            value: "sa"
+          - name: DB_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: db-secret
+                key: MSSQL_SA_PASSWORD
 ---
 apiVersion: v1
 kind: Service
