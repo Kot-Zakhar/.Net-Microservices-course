@@ -1,11 +1,18 @@
 using Microsoft.EntityFrameworkCore;
 using CommandsService.Data;
+using CommandsService.EventProcessing;
+using CommandsService.AsyncDataServices;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 if (builder.Environment.IsProduction()) {
-    var connectionString = builder.Configuration.GetConnectionString("PlatformsDb");
+    var connectionStringFormat = builder.Configuration.GetConnectionString("CommandsDb");
+    var server = Environment.GetEnvironmentVariable("DB_SERVER");
+    var user = Environment.GetEnvironmentVariable("DB_USER");
+    var pass = Environment.GetEnvironmentVariable("DB_PASSWORD");
+    var connectionString = String.Format(connectionStringFormat, server, user, pass);
+    
     Console.WriteLine($"--> Using SqlServer db: {connectionString}");
     builder.Services.AddDbContext<AppDbContext>(opt => opt.UseSqlServer(connectionString));
 } else {
@@ -19,7 +26,8 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
-
+builder.Services.AddHostedService<MessageBusSubscriber>();
+builder.Services.AddSingleton<IEventProcessor, EventProcessor>();
 builder.Services.AddScoped<ICommandsRepository, CommandsRepository>();
 
 var app = builder.Build();

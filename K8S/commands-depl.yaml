@@ -19,7 +19,7 @@ spec:
         - containerPort: 80
         env:
           - name: DB_SERVER
-            value: "commands-clusterip-srv,1433"
+            value: "mssql-commands-clusterip-srv,1433"
           - name: DB_USER
             value: "sa"
           - name: DB_PASSWORD

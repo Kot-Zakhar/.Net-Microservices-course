@@ -15,14 +15,20 @@ namespace CommandsService.Data
       builder
         .Entity<Platform>()
         .HasMany(p => p.Commands)
-        .WithOne(p => p.Platform)
-        .HasForeignKey(p => p.PlatformId);
+        .WithOne(c => c.Platform)
+        .HasForeignKey(c => c.PlatformId)
+        .HasPrincipalKey(p => p.ExternalId);
+      
+      builder.Entity<Platform>()
+        .HasIndex(p => p.ExternalId)
+        .IsUnique();
 
       builder
         .Entity<Command>()
         .HasOne(c => c.Platform)
         .WithMany(c => c.Commands)
-        .HasForeignKey(c => c.PlatformId);
+        .HasForeignKey(c => c.PlatformId)
+        .HasPrincipalKey(p => p.ExternalId);
     }
   }
 }

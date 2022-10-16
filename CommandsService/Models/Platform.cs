@@ -10,7 +10,7 @@ namespace CommandsService.Models
     public int Id { get; set; }
 
     [Required]
-    public int ExtenralId { get; set; }
+    public int ExternalId { get; set; }
 
     [Required]
     public string Name { get; set; }

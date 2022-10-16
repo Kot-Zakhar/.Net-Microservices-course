@@ -17,8 +17,7 @@ namespace CommandsService.Data
             if (env.IsProduction()) {
                 Console.WriteLine("--> Attempting to apply migrations...");
                 try {
-                context.Database.Migrate();
-
+                    context.Database.Migrate();
                 } catch (Exception e) {
                     Console.WriteLine($"--> Could not run migrations: {e.Message}");
                 }
