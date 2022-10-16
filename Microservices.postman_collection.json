@@ -1,83 +1,249 @@
 {
 	"info": {
-		"_postman_id": "1b5d0352-1c54-43d2-8288-2728b501cc36",
+		"_postman_id": "474c82d0-1eb4-430e-bcc5-c3723afcaede",
 		"name": "Microservices",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "19000436"
+		"_exporter_id": "3896504"
 	},
 	"item": [
 		{
-			"name": "Platforms",
+			"name": "Local Dev",
 			"item": [
 				{
-					"name": "Get All Platforms",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "http://localhost:5164/api/platforms",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "5164",
-							"path": [
-								"api",
-								"platforms"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Get Platfrom by id",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "http://localhost:5164/api/platforms/2",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "5164",
-							"path": [
-								"api",
-								"platforms",
-								"2"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "New Platform",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"name\": \"Docker\",\r\n    \"publisher\": \"Docker\",\r\n    \"cost\": \"Free\"\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
+					"name": "Platform Service",
+					"item": [
+						{
+							"name": "Platforms",
+							"item": [
+								{
+									"name": "Get All Platforms",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "http://localhost:5164/api/platforms",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "5164",
+											"path": [
+												"api",
+												"platforms"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Get Platfrom by id",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "http://localhost:5164/api/platforms/2",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "5164",
+											"path": [
+												"api",
+												"platforms",
+												"2"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "New Platform",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"name\": \"Docker\",\r\n    \"publisher\": \"Docker\",\r\n    \"cost\": \"Free\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:5164/api/platforms",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "5164",
+											"path": [
+												"api",
+												"platforms"
+											]
+										}
+									},
+									"response": []
 								}
-							}
-						},
-						"url": {
-							"raw": "http://localhost:5164/api/platforms",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "5164",
-							"path": [
-								"api",
-								"platforms"
 							]
 						}
-					},
-					"response": []
+					]
+				},
+				{
+					"name": "Command Service",
+					"item": []
+				}
+			]
+		},
+		{
+			"name": "K8S",
+			"item": [
+				{
+					"name": "Platform Service",
+					"item": [
+						{
+							"name": "Platfroms",
+							"item": [
+								{
+									"name": "Get All Platforms",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "http://microservices-course.com/api/platforms",
+											"protocol": "http",
+											"host": [
+												"microservices-course",
+												"com"
+											],
+											"path": [
+												"api",
+												"platforms"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "New Platform",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"name\": \"Docker\",\r\n    \"publisher\": \"Docker\",\r\n    \"cost\": \"Free\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://microservices-course.com/api/platforms",
+											"protocol": "http",
+											"host": [
+												"microservices-course",
+												"com"
+											],
+											"path": [
+												"api",
+												"platforms"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "Command Service",
+					"item": [
+						{
+							"name": "Platforms",
+							"item": [
+								{
+									"name": "Get All Platforms",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "http://microservices-course.com/api/c/platforms",
+											"protocol": "http",
+											"host": [
+												"microservices-course",
+												"com"
+											],
+											"path": [
+												"api",
+												"c",
+												"platforms"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "New Command",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"HowTo\": \"Build an image\",\r\n    \"CommandLine\": \"docker build\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://microservices-course.com/api/c/platforms/5/commands",
+											"protocol": "http",
+											"host": [
+												"microservices-course",
+												"com"
+											],
+											"path": [
+												"api",
+												"c",
+												"platforms",
+												"5",
+												"commands"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "Ingress",
+					"item": [
+						{
+							"name": "Get All platforms",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://microservices-course.com/api/platforms",
+									"protocol": "http",
+									"host": [
+										"microservices-course",
+										"com"
+									],
+									"path": [
+										"api",
+										"platforms"
+									]
+								}
+							},
+							"response": []
+						}
+					]
 				}
 			]
 		}
