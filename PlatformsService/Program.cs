@@ -2,6 +2,7 @@ using Microsoft.EntityFrameworkCore;
 using PlatformsService.SyncDataServices.Http;
 using PlatformsService.Data;
 using PlatformsService.AsyncDataServices;
+using PlatformsService.SyncDataServices.Grpc;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -30,9 +31,10 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
-builder.Services.AddScoped<IPlatformRepository, PlatformRepository>();
+builder.Services.AddScoped<IPlatformsRepository, PlatformsRepository>();
 builder.Services.AddHttpClient<ICommandDataClient, HttpCommandDataClient>();
 builder.Services.AddSingleton<IMessageBustClient, MessageBusClient>();
+builder.Services.AddGrpc();
 
 var app = builder.Build();
 
@@ -50,7 +52,12 @@ Console.WriteLine("--> Commands service address: " + app.Configuration.GetValue<
 
 app.UseAuthorization();
 
-app.MapControllers();
+app.UseRouting();
+
+app.UseEndpoints(endpoints => {
+    endpoints.MapGrpcService<GrpcPlatformService>();
+    endpoints.MapControllers();
+});
 
 app.PrepPopulation(app.Environment);
 
